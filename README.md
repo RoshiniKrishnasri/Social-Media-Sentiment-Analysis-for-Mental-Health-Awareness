@@ -1,5 +1,9 @@
 # Social Media Sentiment Analysis for Mental Health Awareness
 
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-MindPulse%20Analytics-6366F1?style=for-the-badge&logo=streamlit&logoColor=white)](https://social-media-sentiment-analysis-for-mental-health-awareness-dk.streamlit.app/)
+
+> 🔗 **Live App:** [https://social-media-sentiment-analysis-for-mental-health-awareness-dk.streamlit.app/](https://social-media-sentiment-analysis-for-mental-health-awareness-dk.streamlit.app/)
+
 An end-to-end Natural Language Processing (NLP) and data science project analyzing public social media discussions to understand sentiment dynamics, identify mental-health and emotional well-being themes, discover latent conversation topics using Latent Dirichlet Allocation (LDA), flag potentially questionable health claims for human review, and present interactive analytics through a multi-page Streamlit dashboard.
 
 ---
