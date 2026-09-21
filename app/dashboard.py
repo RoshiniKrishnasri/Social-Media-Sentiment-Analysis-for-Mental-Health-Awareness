@@ -5,6 +5,14 @@ MindPulse Analytics — Interactive Enterprise Analytics Dashboard
 """
 
 import os, sys, io, base64, re, time
+import nltk
+
+# ── Download required NLTK data (for Streamlit Cloud) ────────────────────────
+for _pkg in ["vader_lexicon", "stopwords", "punkt", "wordnet", "omw-1.4"]:
+    try:
+        nltk.download(_pkg, quiet=True)
+    except Exception:
+        pass
 
 # ── NumPy 2.0 shims ──────────────────────────────────────────────────────────
 import numpy as np
