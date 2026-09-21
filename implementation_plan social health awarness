@@ -1,0 +1,288 @@
+# Social Media Sentiment Analysis for Mental Health Awareness
+
+End-to-end Python project: Twitter sentiment dataset → NLP analysis → mental health theme extraction → interactive dashboard → automated insights report.
+
+## Dataset Summary (Inspected)
+
+| Property | Training Set | Validation Set |
+|---|---|---|
+| **File** | `twitter_training.csv` | `twitter_validation.csv` |
+| **Rows** | 74,682 | 1,000 |
+| **Columns** | 4 (TweetID, Entity, Sentiment, TweetText) | 4 (same) |
+| **No header row** | ✅ | ✅ |
+| **Sentiment labels** | Positive (20,832), Negative (22,542), Neutral (18,318), Irrelevant (12,990) | Positive (277), Negative (266), Neutral (285), Irrelevant (172) |
+| **Missing TweetText** | 686 rows | 0 |
+| **Duplicate rows** | 2,700 | 0 |
+| **Unique entities** | 32 (brands/games: Borderlands, Amazon, Google, Facebook, Microsoft, FIFA, etc.) | Same pool |
+| **No timestamps** | ✅ (no date column) | ✅ |
+| **No location data** | ✅ | ✅ |
+
+> [!IMPORTANT]
+> The dataset contains tweets about **tech brands, video games, and companies** — not mental-health-specific content. The project will apply mental health keyword/theme analysis as an **overlay** on general sentiment data, flagging tweets that happen to mention mental health topics. This is a realistic NLP portfolio approach.
+
+> [!NOTE]
+> Since there are **no timestamps or location data**, Stages 13 (Time-based Analysis) and 14 (Geographical Analysis) from your outline will be **skipped** — we won't fabricate data.
+
+---
+
+## Proposed Changes
+
+### Stage 1 — Project Setup & Dependencies
+
+#### [NEW] [requirements.txt](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/requirements.txt)
+All project dependencies:
+```
+pandas
+numpy
+nltk
+textblob
+scikit-learn
+matplotlib
+seaborn
+wordcloud
+gensim
+streamlit
+plotly
+```
+
+Install with `pip install -r requirements.txt`, then download NLTK data (stopwords, punkt, vader_lexicon, wordnet) and TextBlob corpora.
+
+---
+
+### Stage 2 — Data Understanding
+
+#### [NEW] [src/data_understanding.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/src/data_understanding.py)
+Script that:
+1. Loads both CSV files (no header, assigns column names: `TweetID`, `Entity`, `Sentiment`, `TweetText`)
+2. Displays shape, dtypes, column names
+3. Counts missing values per column
+4. Counts duplicate rows
+5. Shows unique sentiment labels & distribution
+6. Shows unique entities
+7. Displays sample tweets
+8. Generates basic statistics (tweet length, etc.)
+9. Creates initial bar charts (sentiment distribution, entity distribution)
+10. Saves analysis report to `outputs/reports/data_understanding_report.txt`
+11. Saves charts to `outputs/figures/`
+
+---
+
+### Stage 3 — Data Cleaning
+
+#### [NEW] [src/data_cleaning.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/src/data_cleaning.py)
+Module that:
+1. Loads raw CSV → adds column `original_tweet` (preserving raw text)
+2. Removes rows where `TweetText` is NaN (686 rows)
+3. Removes duplicate rows (2,700 rows)
+4. Cleaning pipeline per tweet:
+   - Remove URLs (`http`, `https`, `pic.twitter.com`, etc.)
+   - Remove HTML entities (`&amp;`, `&lt;`, etc.)
+   - Handle `@mentions` (remove the mention but keep for reference)
+   - Handle `#hashtags` (strip the `#` symbol, keep the word)
+   - Convert emojis to text descriptions (using `emoji` library or regex) for sentiment preservation
+   - Normalize whitespace
+   - Remove special characters but preserve apostrophes for contractions
+   - Normalize repeated characters (e.g., "soooo" → "soo")
+5. Creates `cleaned_text` column
+6. Drops rows where `cleaned_text` is empty after cleaning
+7. Saves to `data/processed/cleaned_tweets.csv`
+8. Generates cleaning summary report to `outputs/reports/cleaning_summary.txt`
+
+---
+
+### Stage 4 — Exploratory Data Analysis (EDA)
+
+#### [NEW] [src/eda.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/src/eda.py)
+Generates ~8-10 quality visualizations:
+1. Sentiment distribution (bar chart)
+2. Sentiment distribution by entity (stacked/grouped bar)
+3. Tweet length distribution (histogram)
+4. Tweet length by sentiment (box plot)
+5. Top 20 most frequent words (after stopword removal)
+6. Word cloud (overall and per sentiment)
+7. Entity distribution (bar chart)
+8. Bigram/trigram frequency analysis
+All saved to `outputs/figures/`
+
+---
+
+### Stage 5 — Text Preprocessing (NLP Pipeline)
+
+#### [NEW] [src/preprocessing.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/src/preprocessing.py)
+NLP pipeline using NLTK:
+1. Lowercase conversion
+2. Tokenization (`word_tokenize`)
+3. Punctuation removal
+4. Stopword removal (with **preserved sentiment words**: "not", "never", "no", "very", "really", "too", "but", "however")
+5. Lemmatization (WordNet lemmatizer)
+6. Creates `processed_text` column (joined tokens)
+7. Handles edge cases (empty results → "empty")
+8. Saves to `data/processed/processed_tweets.csv`
+9. Generates preprocessing summary to `outputs/reports/preprocessing_summary.txt`
+
+---
+
+### Stage 6 — Sentiment Analysis (TextBlob + VADER)
+
+#### [NEW] [src/sentiment_analysis.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/src/sentiment_analysis.py)
+
+**TextBlob Analysis:**
+- Calculate `polarity` (-1 to +1) and `subjectivity` (0 to 1)
+- Classify: polarity > 0.05 → Positive, < -0.05 → Negative, else → Neutral
+- Add columns: `tb_polarity`, `tb_subjectivity`, `tb_sentiment`
+
+**VADER Analysis:**
+- Calculate compound, positive, negative, neutral scores
+- Classify: compound ≥ 0.05 → Positive, ≤ -0.05 → Negative, else → Neutral
+- Add columns: `vader_compound`, `vader_pos`, `vader_neg`, `vader_neu`, `vader_sentiment`
+
+**Model Comparison:**
+- Map dataset 4-class labels to 3-class (exclude "Irrelevant" rows for fair comparison)
+- Calculate accuracy: Dataset vs TextBlob, Dataset vs VADER
+- Generate confusion matrices (saved as images)
+- Generate classification reports
+- Create `model_comparison.csv` with side-by-side predictions
+- Save `outputs/results/sentiment_results.csv`
+
+---
+
+### Stage 7 — Mental Health Theme Analysis
+
+#### [NEW] [src/mental_health_analysis.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/src/mental_health_analysis.py)
+
+**Keyword-Based Theme Detection:**
+```python
+themes = {
+    "anxiety": ["anxiety", "anxious", "panic", "worry", "worried", "nervous"],
+    "depression": ["depression", "depressed", "hopeless", "worthless", "sad"],
+    "stress": ["stress", "stressed", "overwhelmed", "burnout", "exhausted"],
+    "therapy": ["therapy", "therapist", "counseling", "counselor", "psychologist"],
+    "medication": ["medication", "medicine", "pills", "prescription", "antidepressant"],
+    "sleep": ["insomnia", "sleep", "sleepless", "nightmare", "restless"],
+    "loneliness": ["lonely", "alone", "isolated", "isolation", "loneliness"],
+    "self_care": ["selfcare", "self-care", "wellness", "mindfulness", "meditation"],
+    "mental_health_awareness": ["mental health", "awareness", "stigma", "support"],
+    "emotional_wellbeing": ["happy", "happiness", "grateful", "positive", "wellbeing"]
+}
+```
+- Tag each tweet with matched themes
+- Analyze sentiment distribution per theme
+- Generate theme frequency chart, theme-sentiment heatmap
+- Save results to `outputs/results/mental_health_themes.csv`
+
+---
+
+### Stage 8 — Topic Modeling (LDA)
+
+#### [NEW] [src/topic_analysis.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/src/topic_analysis.py)
+- TF-IDF vectorization of processed text
+- LDA with 8-10 topics (using sklearn's `LatentDirichletAllocation`)
+- Extract top 10 words per topic
+- Assign dominant topic per tweet
+- Generate topic distribution chart
+- Generate topic-word visualization
+- Save to `outputs/results/topic_model_results.csv`
+
+---
+
+### Stage 9 — Misinformation / Suspicious Content Flagging
+
+#### [NEW] [src/misinformation_analysis.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/src/misinformation_analysis.py)
+- Pattern-based flagging using predefined questionable claim patterns:
+  - "cures depression", "cures anxiety", "guaranteed to", "100% effective"
+  - Absolutist medical claims, unverified treatment claims
+- Flag tweets as `potentially_questionable` (boolean)
+- Add `flag_reason` column
+- **Disclaimer**: "This system flags potentially questionable content for further human review; it does not determine medical truth automatically."
+- Generate summary statistics
+- Save to `outputs/results/flagged_content.csv`
+
+---
+
+### Stage 10 — Visualization Module
+
+#### [NEW] [src/visualization.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/src/visualization.py)
+Centralized visualization module that generates all charts for the dashboard and report:
+- Sentiment distribution charts
+- Model comparison charts
+- Mental health theme visualizations
+- Topic model visualizations
+- Word clouds
+- Polarity/subjectivity distributions
+All saved to `outputs/figures/`
+
+---
+
+### Stage 11 — Streamlit Dashboard
+
+#### [NEW] [app/dashboard.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/app/dashboard.py)
+Multi-page Streamlit dashboard:
+
+**Page 1 — Overview:**
+- KPI cards: Total Tweets, Positive %, Negative %, Neutral %, Average Polarity
+- Sentiment distribution chart
+- Entity distribution chart
+
+**Page 2 — Sentiment Analysis:**
+- Sentiment by entity
+- Polarity distribution
+- Subjectivity distribution
+- TextBlob vs VADER comparison
+
+**Page 3 — Mental Health Themes:**
+- Theme frequency chart
+- Theme × Sentiment heatmap
+- Word cloud
+- Sample tweets per theme
+
+**Page 4 — Topic Analysis:**
+- LDA topic distribution
+- Top words per topic
+- Topic × Sentiment breakdown
+
+**Page 5 — Model Evaluation:**
+- TextBlob accuracy & confusion matrix
+- VADER accuracy & confusion matrix
+- Side-by-side comparison table
+
+**Page 6 — Key Insights:**
+- Auto-generated findings (from data, not hardcoded)
+- Disclaimer about mental health analysis limitations
+
+---
+
+### Stage 12 — Main Pipeline & Reports
+
+#### [NEW] [main.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/main.py)
+Orchestrator script that runs the complete pipeline:
+1. Data understanding → 2. Cleaning → 3. EDA → 4. Preprocessing → 5. Sentiment analysis → 6. Mental health themes → 7. Topic modeling → 8. Misinformation flagging → 9. Visualizations → 10. Auto-generate insights report
+
+#### [NEW] [src/insights_generator.py](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/src/insights_generator.py)
+Auto-generates key findings from actual computed results (not hardcoded).
+
+#### [NEW] [README.md](file:///c:/Users/roshi/Downloads/REAL_WORLD_PROJECTS/Social%20Media%20Sentiment%20Analysis%20for%20Mental%20Health%20Awareness/README.md)
+Project documentation with architecture diagram, setup instructions, usage guide, screenshots.
+
+---
+
+## Open Questions
+
+> [!IMPORTANT]
+> **Entity scope**: The dataset entities are tech brands/games (Amazon, Google, FIFA, Borderlands, etc.), not mental-health-specific accounts. The mental health theme analysis will work by **scanning tweet text for mental health keywords** across all tweets. This is a valid NLP approach — are you comfortable with this, or would you prefer to also incorporate a separate mental-health-specific dataset?
+
+> [!NOTE]
+> **"Irrelevant" sentiment class**: The dataset has 4 labels (Positive, Negative, Neutral, Irrelevant). For TextBlob/VADER comparison, we'll **exclude "Irrelevant" tweets** since those models only predict 3 classes. Does this sound right to you?
+
+---
+
+## Verification Plan
+
+### Automated Tests
+- `python main.py` — runs the full pipeline end-to-end
+- Check all output files exist in `data/processed/`, `outputs/figures/`, `outputs/results/`, `outputs/reports/`
+- Validate sentiment accuracy scores are computed correctly
+
+### Manual Verification
+- `streamlit run app/dashboard.py` — visually verify all dashboard pages
+- Inspect generated charts in `outputs/figures/`
+- Review auto-generated insights report in `outputs/reports/`

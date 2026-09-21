@@ -1,0 +1,57 @@
+================================================================================
+STAGE 7: MENTAL-HEALTH THEME ANALYSIS REPORT
+Project: Social Media Sentiment Analysis for Mental Health Awareness
+================================================================================
+
+1. SUMMARY OF THEMATIC IDENTIFICATION
+----------------------------------------
+Total Evaluated Tweets              : 69,366
+Mental Health / Well-being Tweets   : 2,144 (3.09%)
+
+2. THEME FREQUENCIES
+----------------------------------------
+  - Emotional Wellbeing      : 1,326 tweets
+  - Loneliness & Isolation   :   248 tweets
+  - Anxiety                  :   184 tweets
+  - Stress & Burnout         :   130 tweets
+  - Depression               :   115 tweets
+  - Sleep Disorders          :    62 tweets
+  - Medication & Treatment   :    49 tweets
+  - Mental Health Awareness  :    21 tweets
+  - Therapy & Support        :    17 tweets
+  - Self-Care & Mindfulness  :    10 tweets
+
+3. SENTIMENT DISTRIBUTION PER THEME (%)
+----------------------------------------
+                         Negative  Positive  Neutral  Irrelevant  Total_Tweets
+Theme                                                                         
+Emotional Wellbeing           9.2      45.3     22.5        23.0          1326
+Loneliness & Isolation       35.9      21.0     22.2        21.0           248
+Anxiety                      26.1      12.0     43.5        18.5           184
+Stress & Burnout             26.9      20.8     44.6         7.7           130
+Depression                   39.1      20.9     26.1        13.9           115
+Sleep Disorders              19.4      11.3     45.2        24.2            62
+Medication & Treatment       38.8      16.3     44.9         0.0            49
+Mental Health Awareness      52.4      23.8     23.8         0.0            21
+Therapy & Support            58.8       5.9     29.4         5.9            17
+Self-Care & Mindfulness       0.0       0.0     50.0        50.0            10
+
+4. SAMPLE TWEETS BY MENTAL HEALTH THEME
+----------------------------------------
+[DEPRESSION]
+"Call Of Duty: Black Ops Actor Unhappy About Being Recast in Cold War dlvr.it/RfpBG9"
+
+[ANXIETY]
+"@Borderlands I have some concerns with the new update. On console(Ps4 not sure about other) while playing the gaming audio and visuals start to constantly freeze and break making it hard to continue frame rates drop drastically. Should I be worried."
+
+[STRESS & BURNOUT]
+"I am so exhausted from work this week so probably no borderlands stream today i’m SO SORRY . "
+
+[THERAPY & SUPPORT]
+"I ordered a shit ton of stuff on amazon lately..... I think I have a retail therapy problem  "
+
+================================================================================
+ACADEMIC NOTE:
+Keyword-based heuristic thematic analysis identifies linguistic mentions of mental health concepts
+and does not indicate clinical diagnostic validation.
+================================================================================

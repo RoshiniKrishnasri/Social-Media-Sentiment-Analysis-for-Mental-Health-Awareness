@@ -1,0 +1,36 @@
+================================================================================
+STAGE 4: EXPLORATORY DATA ANALYSIS (EDA) REPORT
+Project: Social Media Sentiment Analysis for Mental Health Awareness
+================================================================================
+
+1. CORPUS SUMMARY
+----------------------------------------
+Total Analyzed Tweets: 69,366
+Total Unique Entities: 32
+
+2. SENTIMENT CLASS PROPORTIONS
+----------------------------------------
+  - Negative    : 21,129 (30.46%)
+  - Positive    : 19,042 (27.45%)
+  - Neutral     : 17,006 (24.52%)
+  - Irrelevant  : 12,189 (17.57%)
+
+3. MENTAL HEALTH INDICATOR EXPLORATION
+----------------------------------------
+Total Mental Health Indicator Mentions: 1,174
+  - depression     :   563 tweets
+  - loneliness     :   225 tweets
+  - anxiety        :   168 tweets
+  - stress         :    73 tweets
+  - sleep_issues   :    72 tweets
+  - medication     :    46 tweets
+  - therapy        :    16 tweets
+  - wellbeing      :    11 tweets
+
+4. KEY FINDINGS FROM EDA
+----------------------------------------
+- Negative sentiment is the largest category (30.46%), followed by Positive (27.45%).
+- Strong presence of distress, stress, and anxiety keywords detected across the general social media corpus.
+- Vocabulary in Negative sentiment reveals distinct clusters around frustration, difficulty, pain, and complaints.
+- Word clouds confirm strong separation between praise/excitement keywords and distress/dissatisfaction keywords.
+================================================================================

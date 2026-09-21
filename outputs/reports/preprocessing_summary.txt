@@ -1,0 +1,37 @@
+================================================================================
+STAGE 5: TEXT PREPROCESSING (NLP) SUMMARY
+Project: Social Media Sentiment Analysis for Mental Health Awareness
+================================================================================
+
+Input Dataset Path         : C:\Users\roshi\Downloads\REAL_WORLD_PROJECTS\Social Media Sentiment Analysis for Mental Health Awareness\data\processed\cleaned_tweets.csv
+Total Rows Processed       : 69,366
+Rows with Empty Fallback   : 312
+Output Dataset Path        : C:\Users\roshi\Downloads\REAL_WORLD_PROJECTS\Social Media Sentiment Analysis for Mental Health Awareness\data\processed\processed_tweets.csv
+
+Stopwords Strategy:
+  - Total Standard Stopwords : 198
+  - Preserved Sentiment Words: 31 (although, anxious, bad, but, cannot, depressed, except, good, great, happy, hate, however, hurt, love, more, most, much, neither, never, no, none, nor, not, pain, really, sad, so, stressed, terrible, too, very)
+  - Active Custom Stopwords  : 189
+
+Sample Transformations:
+----------------------------------------
+[ORIGINAL]:  Johnson & Johnson to stop selling baby talc powder in US and Canada j.mp / 3e1YtDV (Reuters) https: / / Fenco / dsaUTgb5p9
+[CLEANED]:   Johnson Johnson to stop selling baby talc powder in US and Canada Reuters dsaUTgb5p9
+[PROCESSED]: johnson johnson stop selling baby talc powder u canada reuters dsautgb5p9
+----------------------------------------
+[ORIGINAL]:  I'm loving all the R6 and animal crossing crossovers. Somehow more surprising to me than animal crossing and doom.
+[CLEANED]:   I'm loving all the R6 and animal crossing crossovers Somehow more surprising to me than animal crossing and doom
+[PROCESSED]: loving r6 animal crossing crossover somehow more surprising animal crossing doom
+----------------------------------------
+[ORIGINAL]:  Say winning words.
+[CLEANED]:   Say winning words
+[PROCESSED]: say winning word
+----------------------------------------
+[ORIGINAL]:  I ’ m getting tired of seeing this tweet
+[CLEANED]:   I m getting tired of seeing this tweet
+[PROCESSED]: getting tired seeing tweet
+----------------------------------------
+[ORIGINAL]:  Anything that makes Desmond Howard suffer, I'm for.
+[CLEANED]:   Anything that makes Desmond Howard suffer I'm for
+[PROCESSED]: anything make desmond howard suffer
+----------------------------------------

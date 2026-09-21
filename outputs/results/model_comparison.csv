@@ -1,0 +1,5 @@
+Metric,TextBlob,VADER
+Accuracy,0.4787,0.4978
+Macro Precision,0.4811,0.4669
+Macro Recall,0.4752,0.4831
+Macro F1-Score,0.4709,0.461

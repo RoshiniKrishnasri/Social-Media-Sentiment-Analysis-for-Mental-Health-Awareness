@@ -1,0 +1,36 @@
+================================================================================
+STAGE 3: DATA CLEANING SUMMARY
+Project: Social Media Sentiment Analysis for Mental Health Awareness
+================================================================================
+
+Original Row Count           : 74,682
+Removed Missing Text Rows    : 858
+Removed Duplicate Text Rows  : 4,334
+Removed Post-Clean Empty Rows: 124
+Total Rows Removed           : 5,316
+Final Cleaned Row Count      : 69,366
+Data Retention Rate          : 92.88%
+
+Cleaned Sentiment Distribution:
+  - Negative    : 21,129 (30.46%)
+  - Positive    : 19,042 (27.45%)
+  - Neutral     : 17,006 (24.52%)
+  - Irrelevant  : 12,189 (17.57%)
+
+Sample Cleaned Transformations:
+----------------------------------------
+[RAW]:     Johnson & Johnson to stop selling baby talc powder in US and Canada j.mp / 3e1YtDV (Reuters) https: / / Fenco / dsaUTgb5p9
+[CLEANED]: Johnson Johnson to stop selling baby talc powder in US and Canada Reuters dsaUTgb5p9
+----------------------------------------
+[RAW]:     I'm loving all the R6 and animal crossing crossovers. Somehow more surprising to me than animal crossing and doom.
+[CLEANED]: I'm loving all the R6 and animal crossing crossovers Somehow more surprising to me than animal crossing and doom
+----------------------------------------
+[RAW]:     Say winning words.
+[CLEANED]: Say winning words
+----------------------------------------
+[RAW]:     I ’ m getting tired of seeing this tweet
+[CLEANED]: I m getting tired of seeing this tweet
+----------------------------------------
+[RAW]:     Anything that makes Desmond Howard suffer, I'm for.
+[CLEANED]: Anything that makes Desmond Howard suffer I'm for
+----------------------------------------

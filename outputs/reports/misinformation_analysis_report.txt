@@ -1,0 +1,43 @@
+================================================================================
+STAGE 9: MISINFORMATION & QUESTIONABLE CLAIM ANALYSIS REPORT
+Project: Social Media Sentiment Analysis for Mental Health Awareness
+================================================================================
+
+ACADEMIC STATEMENT & SAFEGUARD POLICY:
+"The system flags potentially questionable content for further human review;
+it does not determine medical truth automatically."
+
+1. SUMMARY OF SCAN RESULTS
+----------------------------------------
+Total Evaluated Tweets          : 69,366
+Flagged for Human Review        : 366
+Flag Rate                       : 0.5276%
+
+2. BREAKDOWN BY QUESTIONABLE CATEGORY
+----------------------------------------
+  - Toxicity & Contamination Alarm            :  346 tweets
+  - Dangerous Drug & Substance Claim          :   20 tweets
+
+3. SAMPLE FLAGGED TWEETS & TRIGGER PHRASES
+----------------------------------------
+Category: Dangerous Drug & Substance Claim
+Matched Trigger: 'war on drugs'
+Tweet: "Press F to: . accelerate the war on drugs, cripple minority communities by criminalizing drugs and funneling them in (also hurting race relations), /. ruin/overflow the prison system with mass incarceration and privatization, sell arms to Iran, call black people monkeys..."
+----------------------------------------
+Category: Dangerous Drug & Substance Claim
+Matched Trigger: 'war on drugs'
+Tweet: "F to:. accelerate the war on drugs, paralyze minority communities by criminalizing drugs and smuggling them into Iran (which also damages race relations), /. ruin / overflow the prison system with mass incarceration and privatization, sell weapons to Iran, call blacks apes..."
+----------------------------------------
+Category: Dangerous Drug & Substance Claim
+Matched Trigger: 'war on drugs'
+Tweet: "Press F to:. accelerate the war on drugs, suppress minority communities by criminalizing drugs and channeling them in the right direction (also harming race relations), /. destroy / overflow the prison system with mass incitement and privatization, sell arms to Iran, call black monkeys..."
+----------------------------------------
+Category: Dangerous Drug & Substance Claim
+Matched Trigger: 'war on drugs'
+Tweet: "Press F ears:. accelerate your war on drugs, cripple minority communities with criminalizing drugs and shutting them in (also hurting race relations), /. ruin/overflow the prison system with mass incarceration and privatization, sell arms from Iran, call black people monkeys..."
+----------------------------------------
+Category: Dangerous Drug & Substance Claim
+Matched Trigger: 'war on drugs'
+Tweet: "Press Letter F is to :. accelerate both the war on drugs, to cripple minority Tamil communities by criminalizing these drugs and funneling them farther in ( also hurting tribal race relations ), /. ruin / can overflow the prison system together with mass incarceration and privatization, sell arms to Iran, call black people monkeys..."
+----------------------------------------
+================================================================================

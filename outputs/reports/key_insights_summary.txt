@@ -1,0 +1,27 @@
+================================================================================
+STAGE 12: AUTOMATED KEY FINDINGS & INSIGHTS REPORT
+Project: Social Media Sentiment Analysis for Mental Health Awareness
+================================================================================
+
+KEY FINDINGS (AUTOMATICALLY GENERATED FROM DATA):
+
+1. Negative Sentiment Dominance: 'Negative' represents the largest sentiment class (30.5% of 69,366 tweets), highlighting that user engagement on social platforms is heavily driven by friction, technical issues, and critical feedback.
+
+2. Mental-Health & Emotional Mentions: 2,144 posts (3.09%) contain explicit mental health and wellbeing vocabulary. The most prevalent theme is 'Emotional Wellbeing' (1,324 tweets).
+
+3. Sentiment Disparity in Distress Themes: While overall negative sentiment stands at 30.5%, clinical and distress themes like Depression (39.1% negative) and Therapy Support (58.8% negative) show significantly heightened negative concentration.
+
+4. Model Divergence: NLP evaluation reveals VADER achieved higher accuracy (49.78% vs 47.87%, diff 1.91%), reflecting VADER's specialized lexicon for informal social media syntax.
+
+5. Subjectivity & Valence: The corpus shows an average TextBlob polarity of +0.075 (slight positive lean) and subjectivity of 0.452, indicating that nearly half of social expressions carry opinionated rather than objective factual language.
+
+6. Content Moderation & Safety: The system flagged 366 posts (0.528%) containing toxicity alarms or high-risk pharmaceutical claims that require human review, demonstrating the utility of targeted safety filtering.
+
+7. Primary Discovered Topic: Unsupervised LDA topic modeling identified 'Frustration & Bug Complaints' as the most dominant discussion area (20.7% of corpus), reflecting the technological and community contexts of the dataset.
+
+================================================================================
+ETHICAL SAFEGUARD STATEMENT:
+These analytical findings are derived from computational natural language processing.
+They serve awareness and pattern recognition purposes and must not be used for diagnostic
+or medical intervention purposes.
+================================================================================

@@ -1,0 +1,49 @@
+================================================================================
+STAGE 8: TOPIC MODELING (LDA) REPORT
+Project: Social Media Sentiment Analysis for Mental Health Awareness
+================================================================================
+
+1. MODEL CONFIGURATION
+----------------------------------------
+Algorithm: Latent Dirichlet Allocation (Scikit-Learn)
+Global Topics Discovered: 6
+Mental-Health Focused Sub-Topics: 4
+Feature Representation: Bag-of-Words (CountVectorizer)
+
+2. GLOBAL TOPICS & TOP KEYWORDS
+----------------------------------------
+[Topic_1 - Digital Culture & Media]
+  Keywords: game, best, good, dead, red, fifa, gta, home, want, play
+
+[Topic_2 - Gaming Performance & Play]
+  Keywords: shit, nvidia, microsoft, xbox, ban, battlefield, depot, amazon, na, series
+
+[Topic_3 - Customer Experience & Support]
+  Keywords: year, fuck, tv, got, thank, twitch, news, good, today, happy
+
+[Topic_4 - Community & Social Interaction]
+  Keywords: com, facebook, playing, look, guy, google, pic, twitter, thanks, like
+
+[Topic_5 - Frustration & Bug Complaints]
+  Keywords: game, like, player, love, great, fucking, make, people, thing, play
+
+[Topic_6 - Product Updates & Announcements]
+  Keywords: johnson, new, day, rhandlerr, game, fix, verizon, team, bad, right
+
+3. MENTAL-HEALTH SUBSET TOPICS
+----------------------------------------
+[Topic_1]: grateful, people, com, know, amazon, happy, thanks, shit, thank, year
+[Topic_2]: happy, game, like, love, facebook, pic, pubg, let, xbox, red
+[Topic_3]: johnson, happy, game, good, work, company, day, worried, new, guy
+[Topic_4]: happy, birthday, game, play, really, make, day, time, playing, rhandlerr
+
+4. DOMINANT TOPIC COUNTS ACROSS DATASET
+----------------------------------------
+  - Frustration & Bug Complaints       : 14,328 (20.66%)
+  - Digital Culture & Media            : 14,048 (20.25%)
+  - Product Updates & Announcements    : 11,585 (16.70%)
+  - Gaming Performance & Play          : 10,232 (14.75%)
+  - Community & Social Interaction     :  9,633 (13.89%)
+  - Customer Experience & Support      :  9,540 (13.75%)
+
+================================================================================

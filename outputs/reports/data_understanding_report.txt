@@ -1,0 +1,77 @@
+================================================================================
+STAGE 2: DATA UNDERSTANDING REPORT
+Project: Social Media Sentiment Analysis for Mental Health Awareness
+================================================================================
+
+1. DATASET OVERVIEW
+----------------------------------------
+Training Dataset Shape: 74,682 rows x 4 columns
+Validation Dataset Shape: 1,000 rows x 4 columns
+Columns: ['TweetID', 'Entity', 'Sentiment', 'TweetText']
+Tweet Text Column: 'TweetText'
+Sentiment Label Column: 'Sentiment'
+
+2. COLUMN DATA TYPES
+----------------------------------------
+  - TweetID: int64
+  - Entity: object
+  - Sentiment: object
+  - TweetText: object
+
+3. MISSING VALUES & DUPLICATES
+----------------------------------------
+Training Set:
+  - Missing in TweetID: 0
+  - Missing in Entity: 0
+  - Missing in Sentiment: 0
+  - Missing in TweetText: 686
+  - Exact Duplicate Rows: 2,700
+  - Duplicate Tweet Texts: 4,505
+
+Validation Set:
+  - Missing in TweetID: 0
+  - Missing in Entity: 0
+  - Missing in Sentiment: 0
+  - Missing in TweetText: 0
+  - Exact Duplicate Rows: 0
+
+4. SENTIMENT LABELS & DISTRIBUTION (TRAINING SET)
+----------------------------------------
+  - Negative    : 22,542 tweets (30.18%)
+  - Positive    : 20,832 tweets (27.89%)
+  - Neutral     : 18,318 tweets (24.53%)
+  - Irrelevant  : 12,990 tweets (17.39%)
+
+5. ENTITIES / TOPICS
+----------------------------------------
+Total Unique Entities: 32
+Sample Entities: Borderlands, CallOfDutyBlackopsColdWar, Amazon, Overwatch, Xbox(Xseries), NBA2K, Dota2, PlayStation5(PS5), WorldOfCraft, CS-GO
+
+6. TEXT CHARACTERISTICS (TRAINING SET)
+----------------------------------------
+  - Mean Character Length: 108.8 chars
+  - Max Character Length: 957 chars
+  - Mean Word Count: 19.2 words
+  - Max Word Count: 198 words
+
+7. SAMPLE TWEETS PER SENTIMENT
+----------------------------------------
+[POSITIVE]
+"im getting on borderlands and i will murder you all ,"
+
+[NEGATIVE]
+"the biggest dissappoinment in my life came out a year ago fuck borderlands 3"
+
+[NEUTRAL]
+"Rock-Hard La Varlope, RARE & POWERFUL, HANDSOME JACKPOT, Borderlands 3 (Xbox) dlvr.it/RMTrgF  "
+
+[IRRELEVANT]
+"Appreciate the (sonic) concepts / praxis Valenzuela and Landa-Posas thread together in this talk: multimodal listening, soundwalks, borderlands frameworks, participatory action research, and testimonios. . . So many thoughtful and resonant intersections here.. .  "
+
+================================================================================
+Key Takeaway for Downstream Pipeline:
+1. 686 tweets in the training set have missing text and must be dropped during data cleaning.
+2. 2,700 exact duplicate rows should be deduplicated to prevent data leakage and bias.
+3. Four distinct sentiment classes exist: Positive, Negative, Neutral, and Irrelevant.
+4. The original dataset text is unnormalized, containing URLs, @mentions, and repeated characters.
+================================================================================
