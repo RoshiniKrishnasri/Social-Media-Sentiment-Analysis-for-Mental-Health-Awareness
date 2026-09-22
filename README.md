@@ -188,4 +188,4 @@ This executes all 9 pipeline stages, cleans the data, runs NLP processing, compu
 ```bash
 streamlit run app/dashboard.py
 ```
-The dashboard will open automatically in your browser at `http://localhost:8501`.
+
